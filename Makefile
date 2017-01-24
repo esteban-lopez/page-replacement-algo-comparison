@@ -24,6 +24,8 @@ lru.o: src/lru.cpp inc/pr-sim.h
 fifo.o: src/fifo.cpp inc/pr-sim.h
 	$(CXX) -I$(INC) $(CFLAGS) -c src/fifo.cpp
 
+run:
+	./$(EXECUTABLE)
 clean:
 	rm *.o
 	rm -rf $(OBJ_DIR) $(TARGET) $(EXECUTABLE)
