@@ -26,6 +26,8 @@ void print_set(std::set<T> &s) {
         std::cout << p << " ";
     }
 }
+void help();
+void version();
 int main(int argc, char *argv[])
 {
     int npage_min = 0;
@@ -79,22 +81,27 @@ void get_context(struct context *ctx, int argc, char *argv []) {
         {
             case 'v':
                 std::cout << "version fun" << "\n";
+                version();
                 break;
             case 'h':
                 std::cout << "help fun" << "\n";
+                help();
                 break;
             case 'f':
                 std::cout << "frames : " <<  atoi(optarg) << "\n";
-                
+                ctx->available_frames = atoi(optarg);
                 break;
             case 'M':
                 std::cout << "max-page : " <<  atoi(optarg) << "\n";
+                ctx->npage_max = atoi(optarg);
                 break;
             case 'm':
                 std::cout << "min-page : " <<  atoi(optarg) << "\n";
+                ctx->npage_min = atoi(optarg);
                 break;
             case 'r':
                 std::cout << "num-reference : " <<  atoi(optarg) << "\n";
+                ctx->nref = atoi(optarg);
                 break;
             case '?':
                 /* getopt_long will have already printed an error */
@@ -115,4 +122,16 @@ void get_context(struct context *ctx, int argc, char *argv []) {
             
         }
     }
+}
+void help() {
+    printf("--num-frames : available_frames\n");
+    printf("--min-page : min page number\n");
+    printf("--max-page : max page number\n");
+    printf("--num-references : length of reference sequence\n");
+    printf("--help : to get help\n");
+    printf("--version : print version of program\n");
+}
+
+void version() {
+    printf("1.0\n");
 }

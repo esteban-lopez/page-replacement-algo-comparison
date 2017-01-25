@@ -6,7 +6,7 @@
 #include <map>
 
 int LRU::count_page_fault(struct context *ctx) {
-    std::cout << "Hello LRU" << "\n";
+    //std::cout << "Hello LRU" << "\n";
     //
     //std::cout << "Randomly-chosen mean: " << mean << '\n';
     std::vector<int> ref_seqeunce(ctx->nref);
@@ -47,7 +47,7 @@ int LRU::count_page_fault(struct context *ctx) {
         }
         ref_counting_table[ref_page] = ref_time++;
     }
-    std::cout << "Fault count in LRU algorithm is " << nfault << "\n";
+    //std::cout << "Fault count in LRU algorithm is " << nfault << "\n";
     return nfault;
 }
 
