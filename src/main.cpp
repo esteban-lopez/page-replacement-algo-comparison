@@ -80,27 +80,21 @@ void get_context(struct context *ctx, int argc, char *argv []) {
         switch( choice )
         {
             case 'v':
-                std::cout << "version fun" << "\n";
                 version();
                 break;
             case 'h':
-                std::cout << "help fun" << "\n";
                 help();
                 break;
             case 'f':
-                std::cout << "frames : " <<  atoi(optarg) << "\n";
                 ctx->available_frames = atoi(optarg);
                 break;
             case 'M':
-                std::cout << "max-page : " <<  atoi(optarg) << "\n";
                 ctx->npage_max = atoi(optarg);
                 break;
             case 'm':
-                std::cout << "min-page : " <<  atoi(optarg) << "\n";
                 ctx->npage_min = atoi(optarg);
                 break;
             case 'r':
-                std::cout << "num-reference : " <<  atoi(optarg) << "\n";
                 ctx->nref = atoi(optarg);
                 break;
             case '?':
@@ -134,6 +128,6 @@ void help() {
 }
 
 void version() {
-    printf("1.0\n");
+    printf("Version 1.0\n");
     exit(0);
 }
