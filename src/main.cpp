@@ -130,8 +130,10 @@ void help() {
     printf("--num-references : length of reference sequence\n");
     printf("--help : to get help\n");
     printf("--version : print version of program\n");
+    exit(0);
 }
 
 void version() {
     printf("1.0\n");
+    exit(0);
 }
