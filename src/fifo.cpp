@@ -1,10 +1,7 @@
 #include "pr-sim.h"
+#include "gen-random-seq.h"
 
-class fifo {
-public:
-    fifo();
-    ~fifo();
-
-private:
-    /* data */
-};
+int FIFO::count_page_fault(struct context *ctx) {
+    std::cout << "FIFO" << "\n";
+    return 1000;
+}

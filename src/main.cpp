@@ -33,9 +33,13 @@ int main(int argc, char *argv[])
     struct context ictx;
     get_context(&ictx, argc, argv); // process option variables
     ictx.print();
-    LRU lru;
-    int lru_fault = lru.count_page_fault(&ictx);
+    LRU LRUSimulator;
+    FIFO FIFOSimulator;
+    int lru_fault = LRUSimulator.count_page_fault(&ictx);
+    int fifo_fault = FIFOSimulator.count_page_fault(&ictx);
+
     std::cout << "LRU's fault " << lru_fault << "\n";
+    std::cout << "FIFO's fault " << fifo_fault << "\n";
 }
 // return recently referenced page
 int reference_next_page(int page, std::map<int, int> &tab) {

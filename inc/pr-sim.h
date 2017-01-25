@@ -40,14 +40,15 @@ private:
 class LRU : public PageRepAlgo {
     public:
         LRU() {}
+        ~LRU() {}
         virtual int count_page_fault(struct context *ctx);
 };
 
 class FIFO : public PageRepAlgo {
-public:
-    FIFO(); 
-    ~FIFO();
-    virtual int count_page_fault(struct context *ctx);
-private:
-    /* data */
+    public:
+        FIFO() {}
+        ~FIFO() {}
+        virtual int count_page_fault(struct context *ctx);
+    private:
+        /* data */
 };
