@@ -1,31 +1,7 @@
 #include <iostream>
-#include <map>
-#include <set>
-#include <cassert>
 #include "pr-sim.h"
 #include <getopt.h>
-#include <vector>
 
-template<typename T>
-void print_vec(std::vector<T> &v) {
-    for (auto &p : v) 
-        std::cout << p << " ";
-    std::cout << "\n";
-
-}
-template<typename T>
-void print_maptable(std::map<T, T> &tab) {
-    for (auto &p : tab) {
-        std::cout << p.first << " " << p.second << "\n";
-    }
-}
-template<typename T>
-void print_set(std::set<T> &s) {
-    std::cout << "Loaded pages : ";
-    for (auto &p : s) {
-        std::cout << p << " ";
-    }
-}
 void help();
 void version();
 int main(int argc, char *argv[])
@@ -33,17 +9,18 @@ int main(int argc, char *argv[])
     struct context ictx;
     get_context(&ictx, argc, argv); // process option variables
     ictx.print();
+    PageRepAlgo *page_rep_algo;
     LRU LRUSimulator;
     FIFO FIFOSimulator;
-    int lru_fault = LRUSimulator.count_page_fault(&ictx);
-    int fifo_fault = FIFOSimulator.count_page_fault(&ictx);
+    /*int lru_fault = LRUSimulator.count_page_fault(&ictx);
+    int fifo_fault = FIFOSimulator.count_page_fault(&ictx);*/
+    page_rep_algo = &LRUSimulator;
+    int lru_fault = page_rep_algo->count_page_fault(&ictx);
+    page_rep_algo = &FIFOSimulator;
+    int fifo_fault = page_rep_algo->count_page_fault(&ictx);
 
     std::cout << "LRU's fault " << lru_fault << "\n";
     std::cout << "FIFO's fault " << fifo_fault << "\n";
-}
-// return recently referenced page
-int reference_next_page(int page, std::map<int, int> &tab) {
-    return (tab[page]++);
 }
 void get_context(struct context *ctx, int argc, char *argv []) {
     int choice;
