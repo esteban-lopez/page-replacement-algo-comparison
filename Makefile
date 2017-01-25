@@ -35,7 +35,7 @@ option.o: src/option.cpp inc/pr-sim.h inc/utility.h
 
 run:
 	# examples
-	./$(EXECUTABLE) --num-frames 5 --min-page 1 --max-page 10 --num-references 100
+	./$(EXECUTABLE) --num-frames 10 --min-page 1 --max-page 40 --num-references 1000
 clean:
 	rm *.o
 	rm -rf $(OBJ_DIR) $(TARGET) $(EXECUTABLE)
