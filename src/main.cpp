@@ -25,26 +25,26 @@ void print_set(std::set<T> &s) {
         std::cout << p << " ";
     }
 }
-void generate_random_reference_sequence(int range_min, int range_max, std::vector<int> &rseq);
-
-int main(int argc, const char *argv[])
+void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq);
+int main(int argc, char *argv[])
 {
     int npage_min = 0;
     int npage_max = 9;
     int nref = 30; // number of reference sequence
     int available_frames = 7;
     struct context input_context(npage_min, npage_max, nref, available_frames);
+    get_context(input_context, argc, argv); // process option variables
     // 
     //std::cout << "Randomly-chosen mean: " << mean << '\n';
-
     std::vector<int> ref_seqeunce(nref);
-    generate_random_reference_sequence(npage_min, npage_max, ref_seqeunce);
+    gen_ref_seq(npage_min, npage_max, ref_seqeunce);
     //print_vec(ref_seqeunce);
 
     std::set<int> loaded_pages; // Initially, It contains 0 because of demand paging
     std::map<int, int> ref_counting_table;
     int nfault = 0;
     int ref_time = 0;
+    
     for (int i = 0; i < nref; i++) {
         int ref_page = ref_seqeunce[i];
         //print_set(loaded_pages);
@@ -80,11 +80,14 @@ int main(int argc, const char *argv[])
 int reference_next_page(int page, std::map<int, int> &tab) {
     return (tab[page]++);
 }
-void generate_random_reference_sequence(int range_min, int range_max, std::vector<int> &rseq) {
+void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq) {
     std::random_device rd;
     std::default_random_engine e1(rd());
     std::uniform_int_distribution<int> uniform_dist(range_min, range_max);
     for (int i = 0; i < rseq.size(); i++) {
         rseq[i] = uniform_dist(e1);
     }
+}
+void get_context(struct context &ctx, int argc, char *argv []) {
+
 }
