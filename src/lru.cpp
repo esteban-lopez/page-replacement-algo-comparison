@@ -1,7 +1,7 @@
 #include "pr-sim.h"
 #include "gen-random-seq.h"
-
 #include <iostream>
+#include <vector>
 #include <set>
 #include <map>
 
