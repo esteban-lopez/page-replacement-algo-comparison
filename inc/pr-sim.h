@@ -1,3 +1,4 @@
+#include <iostream>
 struct context {
     int npage_min = 0;
     int npage_max = 9;
@@ -5,8 +6,15 @@ struct context {
     int available_frames = 7;
     context(int pmin, int pmax, int r, int af) : 
         npage_min(pmin), npage_max(pmax), nref(r), available_frames(af) {}
+    void print() {
+        printf("%-45s\n", "--------------------------------------------------------------");
+        printf("%-15s%-15s%-15s%-18s\n", "Min Page", "Max Page", "Num reference", "Available Frame");
+        printf("%-45s\n", "--------------------------------------------------------------");
+        printf("%-15d%-15d%-15d%-18d\n",  npage_min, npage_max, nref, available_frames);
+        printf("%-45s\n", "--------------------------------------------------------------");
+    }
 };
-void get_context(struct context &ctx, int argc, char *argv[]);
+void get_context(struct context *ctx, int argc, char *argv[]);
 
 class PageRepAlgo {
     public:
