@@ -33,8 +33,10 @@ int main(int argc, char *argv[])
     int nref = 30; // number of reference sequence
     int available_frames = 7;
     struct context input_context(npage_min, npage_max, nref, available_frames);
+    LRU lru;
+    lru.count_page_fault(&input_context);
     get_context(input_context, argc, argv); // process option variables
-    // 
+    
     //std::cout << "Randomly-chosen mean: " << mean << '\n';
     std::vector<int> ref_seqeunce(nref);
     gen_ref_seq(npage_min, npage_max, ref_seqeunce);

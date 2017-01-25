@@ -8,6 +8,12 @@ struct context {
 };
 void get_context(struct context &ctx, int argc, char *argv[]);
 
+class PageRepAlgo {
+    public:
+        virtual int count_page_fault(struct context *ctx) = 0;
+    protected:
+        PageRepAlgo() {}
+};
 class Context {
 public:
     Context(PageRepAlgo *);  
@@ -21,16 +27,10 @@ private:
     int available_frames;
 };
 
-class PageRepAlgo {
-    public:
-        virtual int count_page_fault(struct context *ctx) = 0;
-    protected:
-        PageRepAlgo();
-};
 
 class LRU : public PageRepAlgo {
     public:
-        LRU_couter();
+        LRU() {}
         virtual int count_page_fault(struct context *ctx);
 };
 
