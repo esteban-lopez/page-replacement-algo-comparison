@@ -30,11 +30,7 @@ void help();
 void version();
 int main(int argc, char *argv[])
 {
-    int npage_min = 0;
-    int npage_max = 9;
-    int nref = 30; // number of reference sequence
-    int available_frames = 7;
-    struct context ictx(npage_min, npage_max, nref, available_frames);
+    struct context ictx;
     get_context(&ictx, argc, argv); // process option variables
     ictx.print();
     LRU lru;

@@ -6,6 +6,7 @@ struct context {
     int available_frames = 7;
     context(int pmin, int pmax, int r, int af) : 
         npage_min(pmin), npage_max(pmax), nref(r), available_frames(af) {}
+    context() {}
     void print() {
         printf("%-45s\n", "--------------------------------------------------------------");
         printf("%-15s%-15s%-15s%-18s\n", "Min Page", "Max Page", "Num reference", "Available Frame");
