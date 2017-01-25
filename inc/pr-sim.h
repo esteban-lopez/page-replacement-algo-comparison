@@ -1,4 +1,5 @@
 #include <iostream>
+
 struct context {
     int npage_min = 0;
     int npage_max = 9;
@@ -15,8 +16,8 @@ struct context {
         printf("%-45s\n", "--------------------------------------------------------------");
     }
 };
-void get_context(struct context *ctx, int argc, char *argv[]);
 
+void get_context(struct context *ctx, int argc, char *argv[]);
 class PageRepAlgo {
     public:
         virtual int count_page_fault(struct context *ctx) = 0;
