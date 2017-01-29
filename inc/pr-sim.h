@@ -1,6 +1,12 @@
 #include <iostream>
 #include <vector>
 
+#define I_LRU 0
+#define I_FIFO 1
+#define I_MFU 2
+#define I_LFU 3
+#define MAX_ALGO 4
+
 struct context {
     int npage_min = 0;
     int npage_max = 9;
