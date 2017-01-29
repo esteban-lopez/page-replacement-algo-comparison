@@ -3,7 +3,7 @@ CXX=g++
 CFLAGS=-std=c++14 -O2
 INC=./inc
 EXECUTABLE=bin/pr-sim
-SRC=./src
+SRC=main.cpp lru.cpp fifo.cpp gen-random-seq.cpp utility.cpp
 OBJ=main.o lru.o fifo.o lfu.o mfu.o gen-random-seq.o utility.o option.o 
 OBJ_DIR=$(addprefix obj/,$(OBJ))
 SRC_DIR=$(addprefix src/,$(SRC))
@@ -15,7 +15,7 @@ $(TARGET) : $(OBJ)
 	$(CXX) -I$(INC) $(CFLAGS) $(OBJ_DIR) -o $(EXECUTABLE)
 
 main.o: src/main.cpp inc/pr-sim.h inc/utility.h
-	$(CXX) -I$(INC) $(CFLAGS) -c src/main.cpp src/lru.cpp src/fifo.cpp src/gen-random-seq.cpp src/utility.cpp src/mfu.cpp src/lfu.cpp
+	$(CXX) -I$(INC) $(CFLAGS) -c $(SRC_DIR)
 	#$(MOVE_OBJ)
 
 lru.o: src/lru.cpp inc/pr-sim.h inc/gen-random-seq.h

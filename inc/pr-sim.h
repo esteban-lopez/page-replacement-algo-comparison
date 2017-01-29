@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 #define I_LRU 0
 #define I_FIFO 1
@@ -29,6 +30,8 @@ void get_context(struct context *ctx, int argc, char *argv[]);
 class PageRepAlgo {
     public:
         virtual int count_page_fault(struct context *ctx) = 0;
+        std::string name;
+        std::string get_name() {return name;};
     protected:
         PageRepAlgo() {}
 };
@@ -48,14 +51,15 @@ private:
 
 class LRU : public PageRepAlgo {
     public:
-        LRU() {}
+        LRU() {name="LRU";}
         ~LRU() {}
         virtual int count_page_fault(struct context *ctx);
+
 };
 
 class FIFO : public PageRepAlgo {
     public:
-        FIFO() {}
+        FIFO() {name="FIFO";}
         ~FIFO() {}
         virtual int count_page_fault(struct context *ctx);
     private:
@@ -64,14 +68,14 @@ class FIFO : public PageRepAlgo {
 
 class LFU : public PageRepAlgo {
     public:
-        LFU() {}
+        LFU() {name="LFU";}
         ~LFU() {}
         virtual int count_page_fault(struct context *ctx);
 };
 
 class MFU : public PageRepAlgo {
     public:
-        MFU() {}
+        MFU() {name="MFU";}
         ~MFU() {}
         virtual int count_page_fault(struct context *ctx);
 };
