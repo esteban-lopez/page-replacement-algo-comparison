@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 struct context {
     int npage_min = 0;
@@ -53,3 +54,18 @@ class FIFO : public PageRepAlgo {
     private:
         /* data */
 };
+
+class LFU : public PageRepAlgo {
+    public:
+        LFU() {}
+        ~LFU() {}
+        virtual int count_page_fault(struct context *ctx);
+};
+
+class MFU : public PageRepAlgo {
+    public:
+        MFU() {}
+        ~MFU() {}
+        virtual int count_page_fault(struct context *ctx);
+};
+

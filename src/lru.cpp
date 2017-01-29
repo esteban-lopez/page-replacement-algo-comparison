@@ -6,12 +6,8 @@
 #include <map>
 
 int LRU::count_page_fault(struct context *ctx) {
-    //std::cout << "Hello LRU" << "\n";
-    //
-    //std::cout << "Randomly-chosen mean: " << mean << '\n';
     std::vector<int> ref_seqeunce(ctx->nref);
     gen_ref_seq(ctx->npage_min, ctx->npage_max, ref_seqeunce);
-    //print_vec(ref_seqeunce);
 
     std::set<int> loaded_pages; // Initially, It contains 0 because of demand paging
     std::map<int, int> ref_counting_table;
