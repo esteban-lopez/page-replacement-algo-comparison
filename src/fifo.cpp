@@ -7,7 +7,6 @@
 int FIFO::count_page_fault(struct context *ctx) {
     std::vector<int> ref_seqeunce(ctx->nref);
     gen_ref_seq(ctx->npage_min, ctx->npage_max, ref_seqeunce);
-    std::cout << "FIFO" << "\n";
     std::list<int> loaded_pages;
     int nfault = 0;
 
