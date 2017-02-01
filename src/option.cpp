@@ -1,5 +1,6 @@
 #include "pr-sim.h"
 #include "utility.h"
+#include "gen-random-seq.h"
 #include <getopt.h>
 
 void get_context(struct context *ctx, int argc, char *argv []) {
@@ -64,6 +65,8 @@ void get_context(struct context *ctx, int argc, char *argv []) {
                 break;
         }
     }
+    ctx->ref_seqeunce = std::vector<int>(ctx->nref);
+    gen_ref_seq(ctx->npage_min, ctx->npage_max, ctx->ref_seqeunce);
 
     /* Deal with non-option arguments here */
     if ( optind < argc )

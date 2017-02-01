@@ -6,8 +6,6 @@
 #include <map>
 
 int LRU::count_page_fault(struct context *ctx) {
-    std::vector<int> ref_seqeunce(ctx->nref);
-    gen_ref_seq(ctx->npage_min, ctx->npage_max, ref_seqeunce);
 
     std::set<int> loaded_pages; // Initially, It contains 0 because of demand paging
     std::map<int, int> ref_counting_table;
@@ -15,7 +13,7 @@ int LRU::count_page_fault(struct context *ctx) {
     int ref_time = 0;
     
     for (int i = 0; i < ctx->nref; i++) {
-        int ref_page = ref_seqeunce[i];
+        int ref_page = ctx->ref_seqeunce[i];
         //print_set(loaded_pages);
         //std::cout << "(" <<  ref_page << ")" << "\n";
         if (loaded_pages.find(ref_page) == loaded_pages.end()) {
