@@ -12,6 +12,7 @@ int MFU::count_page_fault(struct context *ctx) {
 
     for (int i = 0; i < ctx->nref; i++) {
         int ref_page = ctx->ref_seqeunce[i];
+        std::cout << ref_page << "\n";
         auto has_page =
             !(std::find(loaded_pages.begin(), loaded_pages.end(), ref_page) == loaded_pages.end());
         if (has_page == false) {

@@ -23,6 +23,6 @@ $(TARGET) : $(OBJ)
 
 run:
 	# examples
-	./$(TARGET) --num-frames 500 --min-page 1 --max-page 1000 --num-references 10000
+	./$(TARGET) --num-frames 8 --min-page 1 --max-page 15 --num-references 100
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
