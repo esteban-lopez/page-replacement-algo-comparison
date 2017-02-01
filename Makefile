@@ -1,7 +1,7 @@
 VPATH=src
 TARGET=bin/page-rep-sim
 CXX=g++
-CXXFLAGS=-std=c++14 -O2 -I./inc
+CXXFLAGS=-std=c++14 -O2
 INC=./inc
 
 SRC=$(subst src/,,$(wildcard src/*.cpp))
@@ -11,7 +11,10 @@ SRC_DIR=$(wildcard src/*.cpp)
 OBJ_DIR=$(subst src/,obj/,$(SRC_DIR:.cpp=.o))
 #OBJ_DIR=$(addprefix obj/,$(OBJ))
 #SRC_DIR=$(addprefix src/,$(SRC))
-MOVE_OBJ=mv $@ obj/
+.SUFFIXES : .cpp .o
+
+.cpp.o :
+	$(CXX) $(CXXFLAGS) -I$(INC) -c $< -o $@
 
 $(TARGET) : $(OBJ)
 	@echo $(OBJ_DIR)
