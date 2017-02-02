@@ -3,6 +3,7 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <queue>
 
 int FIFO::count_page_fault(struct context *ctx) {
     std::list<int> loaded_pages;

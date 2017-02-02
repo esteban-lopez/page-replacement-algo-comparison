@@ -19,9 +19,9 @@ int LFU::count_page_fault(struct context *ctx) {
             if (loaded_pages.size() >= ctx->available_frames) {
                 auto lfu_page = loaded_pages.begin();
                 // find the least freqeuntly used page
-                for (auto &p : loaded_pages) {
-                    if (ref_counting_table[*lfu_page] > ref_counting_table[p]) {
-                        *lfu_page = p;
+                for (auto i = loaded_pages.begin(); i != loaded_pages.end(); ++i) {
+                    if (ref_counting_table[*lfu_page] > ref_counting_table[*i]) {
+                        lfu_page = i;
                     }
                 }
                 //auto victim = std::find(loaded_pages.begin(), loaded_pages.end(), lfu_page);

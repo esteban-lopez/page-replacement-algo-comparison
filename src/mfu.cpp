@@ -12,7 +12,6 @@ int MFU::count_page_fault(struct context *ctx) {
 
     for (int i = 0; i < ctx->nref; i++) {
         int ref_page = ctx->ref_seqeunce[i];
-        std::cout << ref_page << "\n";
         auto has_page =
             !(std::find(loaded_pages.begin(), loaded_pages.end(), ref_page) == loaded_pages.end());
         if (has_page == false) {
@@ -20,12 +19,11 @@ int MFU::count_page_fault(struct context *ctx) {
             if (loaded_pages.size() >= ctx->available_frames) {
                 auto mfu_page = loaded_pages.begin();
                 // find the least freqeuntly used page
-                for (auto &p : loaded_pages) {
-                    if (ref_counting_table[*mfu_page] < ref_counting_table[p]) {
-                        *mfu_page = p;
+                for (auto i = loaded_pages.begin(); i != loaded_pages.end(); ++i) {
+                    if (ref_counting_table[*mfu_page] < ref_counting_table[*i]) {
+                        mfu_page = i;
                     }
                 }
-                //auto victim = std::find(loaded_pages.begin(), loaded_pages.end(), mfu_page);
                 loaded_pages.erase(mfu_page);
             }
             loaded_pages.push_back(ref_page);
