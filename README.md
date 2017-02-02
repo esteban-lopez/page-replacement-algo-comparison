@@ -7,6 +7,8 @@ cd page-replacement-simulator
 ./setup.sh
 make run
 ```
+
+
 ## Option explained
 1. --num-frames # : number of available frames
 2. --min-page # : minimum page number

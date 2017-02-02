@@ -18,6 +18,7 @@ void get_context(struct context *ctx, int argc, char *argv []) {
             {"min-page", required_argument,    0,    'm'},
             {"max-page", required_argument,    0,    'M'},
             {"num-references", required_argument,    0,    'r'},
+            {"distribution", required_argument, 0, 'd'},
             
             {0,0,0,0}
         };
@@ -29,12 +30,12 @@ void get_context(struct context *ctx, int argc, char *argv []) {
             required_argument: ":"
             optional_argument: "::" */
 
-        choice = getopt_long(argc, argv, "vhf:M:m:r:",
+        choice = getopt_long(argc, argv, "vhf:M:m:r:d:",
                     long_options, &option_index);
 
         if (choice == -1)
             break;
-
+        int distribution = DISTRIB_UNIFORM;
         switch( choice )
         {
             case 'v':
@@ -55,6 +56,8 @@ void get_context(struct context *ctx, int argc, char *argv []) {
             case 'r':
                 ctx->nref = atoi(optarg);
                 break;
+            /*case 'd':
+                distribution = atoi(optarg);*/
             case '?':
                 /* getopt_long will have already printed an error */
                 std::cout << "WTF?" << "\n";
@@ -66,7 +69,8 @@ void get_context(struct context *ctx, int argc, char *argv []) {
         }
     }
     ctx->ref_seqeunce = std::vector<int>(ctx->nref);
-    gen_ref_seq(ctx->npage_min, ctx->npage_max, ctx->ref_seqeunce);
+    gen_ref_seq(ctx->npage_min, ctx->npage_max, ctx->ref_seqeunce, DISTRIB_NORMAL);
+    //gen_ref_seq(ctx->npage_min, ctx->npage_max, ctx->ref_seqeunce, DISTRIB_UNIFORM);
 
     /* Deal with non-option arguments here */
     if ( optind < argc )
