@@ -15,7 +15,7 @@ void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq, int distr
 
 void gen_uniform(std::vector<int> &rseq, std::default_random_engine &e1, int range_min, int range_max);
 /* Normal distribution calculates mean by (range_min + range_max) / 2
- * and standard deviation is 1 */
+ * and standard deviation is 5 */
 void gen_normal(std::vector<int> &rseq, std::default_random_engine &e1, int range_min, int range_max);
 void gen_poisson(std::vector<int> &rseq, std::default_random_engine &e1, double mean);
 //void gen_normal(std::vector<int> &rseq, std::default_random_engine &e1, double mean, double stddev);

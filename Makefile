@@ -22,7 +22,7 @@ $(TARGET) : $(OBJ)
 	mv *.o obj/
 
 run:
-	# examples
+# examples
 	./$(TARGET) --num-frames 30 --min-page 1 --max-page 50 --num-references 10000 
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)

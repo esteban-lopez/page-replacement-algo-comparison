@@ -1,4 +1,4 @@
-#include "gen-random-seq.h"
+#include <gen-random-seq.h>
 #include <iostream>
 
 // unifrom distribution is default
