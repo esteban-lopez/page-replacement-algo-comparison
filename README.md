@@ -1,5 +1,5 @@
-# page-replacement-simulator
-lru, fifo, lfu, mfu page replacement algorithm implementation and their comparison.
+# page-replacement-algorithm-comparison
+lru, fifo, lfu, mfu page replacement algorithm implementation and their comparison by counting page fault under several probability distribution.
 
 ```
 git clone https://github.com/rupc/page-replacement-simulator
