@@ -4,7 +4,7 @@ I actually start this small project for the problem 9.34 from the text book, Ope
 
 ```
 git clone https://github.com/rupc/page-rep-algo-comp
-cd page-replacement-simulator
+cd page-rep-algo-comp
 ./setup.sh
 make run
 ```
