@@ -16,3 +16,5 @@ make run
 4. --num-references # : number of reference sequence
 
 **You can change option argument from run: section in Makefile**
+
+**You can also add more probability distributions in src/gen-random-seq.cpp**
