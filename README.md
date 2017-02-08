@@ -1,5 +1,6 @@
 # page-replacement-algorithm-comparison
 lru, fifo, lfu, mfu page replacement algorithm implementation and their comparison by counting page fault under several probability distribution.
+I actually start this small project for the problem 9.34 from the text book, Operating system concepts 8th
 
 ```
 git clone https://github.com/rupc/page-replacement-simulator
