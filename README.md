@@ -1,4 +1,18 @@
 # page-replacement-simulator
-lru and its variations, fifo, lfu, mfu page replacement algorithm written in c++.
+lru, fifo, lfu, mfu page replacement algorithm implementation and their comparison.
 
-pr-sim.h // page replacement simulator
+```
+git clone https://github.com/rupc/page-replacement-simulator
+cd page-replacement-simulator
+./setup.sh
+make run
+```
+
+
+## Option explained
+1. --num-frames # : number of available frames
+2. --min-page # : minimum page number
+3. --max-page # : maximum page number
+4. --num-references # : number of reference sequence
+
+**You can change option argument from run: section in Makefile**
