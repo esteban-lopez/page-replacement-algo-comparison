@@ -3,7 +3,7 @@ lru, fifo, lfu, mfu page replacement algorithm implementation and their comparis
 I actually start this small project for the problem 9.34 from the text book, Operating system concepts 8th
 
 ```
-git clone https://github.com/rupc/page-replacement-simulator
+git clone https://github.com/rupc/page-rep-algo-comp
 cd page-replacement-simulator
 ./setup.sh
 make run
