@@ -2,7 +2,7 @@
 #include <iostream>
 
 // unifrom distribution is default
-// use no locality properties which is actually happened in reality
+// use no locality properties which is not actually happened in computer system
 void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq) {
     std::random_device rd;
     std::default_random_engine e1(rd());
