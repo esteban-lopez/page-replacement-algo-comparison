@@ -10,12 +10,17 @@
 #define DISTRIB_EXPONEN 6
 #define DISTRIB_UNIFORM 7
 
-void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq);
-void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq, int distribution);
+/*void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq);
+void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq, int distribution);*/
 
-void gen_uniform(std::vector<int> &rseq, std::default_random_engine &e1, int range_min, int range_max);
+void gen_ref_seq(struct context *ctx);
+void gen_ref_seq(struct context *ctx);
+void gen_uniform(struct context *ctx);
+void gen_normal(struct context *ctx);
+void gen_poisson(struct context *ctx);
+
 /* Normal distribution calculates mean by (range_min + range_max) / 2
  * and standard deviation is 5 */
-void gen_normal(std::vector<int> &rseq, std::default_random_engine &e1, int range_min, int range_max);
-void gen_poisson(std::vector<int> &rseq, std::default_random_engine &e1, double mean);
+//void gen_normal(std::vector<int> &rseq, std::default_random_engine &e1, int range_min, int range_max);
+//void gen_poisson(std::vector<int> &rseq, std::default_random_engine &e1, double mean);
 //void gen_normal(std::vector<int> &rseq, std::default_random_engine &e1, double mean, double stddev);

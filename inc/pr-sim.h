@@ -6,13 +6,16 @@
 #define I_FIFO 1
 #define I_MFU 2
 #define I_LFU 3
-#define MAX_ALGO 4
+#define MAX_ALGO 5
 
 struct context {
     int npage_min = 0;
     int npage_max = 9;
     int nref = 30; // number of reference sequence
     int available_frames = 7;
+    int mean = 10;
+    int stddev = 0;
+    int distribution;
     std::vector<int> ref_seqeunce;
     context(int pmin, int pmax, int r, int af) : 
         npage_min(pmin), npage_max(pmax), nref(r), available_frames(af) {}
@@ -77,6 +80,13 @@ class MFU : public PageRepAlgo {
     public:
         MFU() {name="MFU";}
         ~MFU() {}
+        virtual int count_page_fault(struct context *ctx);
+};
+
+class SecondChance : public PageRepAlgo {
+    public:
+        SecondChance() {name = "Second Chance";}
+        ~SecondChance() {}
         virtual int count_page_fault(struct context *ctx);
 };
 

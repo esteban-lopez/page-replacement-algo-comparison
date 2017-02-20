@@ -5,6 +5,7 @@
 
 void get_context(struct context *ctx, int argc, char *argv []) {
     int choice;
+        printf("%d\n", __LINE__);
     while (1)
     {
         static struct option long_options[] =
@@ -19,7 +20,18 @@ void get_context(struct context *ctx, int argc, char *argv []) {
             {"max-page", required_argument,    0,    'M'},
             {"num-references", required_argument,    0,    'r'},
             {"distribution", required_argument, 0, 'd'},
-            
+            /*{"mean", required_argument, 0, 0},
+            {"stddev", required_argument, 0, 0},*/
+            {"mean", required_argument, 0, OPT_MEAN},
+            {"stddev", required_argument, 0, OPT_STDDEV},
+
+            {"poisson", no_argument, 0, OPT_POISSON},
+            {"normal", no_argument, 0, OPT_NORMAL},
+            {"geometric", no_argument, 0, OPT_GEOMETRIC},
+            {"binomial", no_argument, 0, OPT_BINOMIAL},
+            {"exponential", no_argument, 0, OPT_EXPONENTIAL},
+            {"uniform", no_argument, 0, OPT_UNIFORM},
+            {"user-dist", required_argument, 0, OPT_USERDIST},
             {0,0,0,0}
         };
 
@@ -36,14 +48,39 @@ void get_context(struct context *ctx, int argc, char *argv []) {
         if (choice == -1)
             break;
         int distribution = DISTRIB_UNIFORM;
+
         switch( choice )
         {
-            case 'v':
-                version();
+            case OPT_MEAN:
+                ctx->mean = atoi(optarg);
                 break;
-            case 'h':
-                help();
+            case OPT_STDDEV:
+                ctx->stddev = atoi(optarg);
                 break;
+
+            /* specify distribution type*/
+            case OPT_POISSON:
+                ctx->distribution = DISTRIB_POISSON;
+                break;
+            case OPT_NORMAL:
+                ctx->distribution = DISTRIB_NORMAL;
+                break;
+            case OPT_GEOMETRIC:
+                ctx->distribution = DISTRIB_GEOMETRIC;
+                break;
+            case OPT_BINOMIAL:
+                ctx->distribution = DISTRIB_BINOMIAL;
+                break;
+            case OPT_EXPONENTIAL:
+                ctx->distribution = DISTRIB_EXPONENTIAL;
+                break;
+            case OPT_UNIFORM:
+                ctx->distribution = DISTRIB_UNIFORM;
+                break;
+            case OPT_USERDIST:
+                break;
+
+
             case 'f':
                 ctx->available_frames = atoi(optarg);
                 break;
@@ -56,11 +93,15 @@ void get_context(struct context *ctx, int argc, char *argv []) {
             case 'r':
                 ctx->nref = atoi(optarg);
                 break;
-            /*case 'd':
-                distribution = atoi(optarg);*/
             case '?':
                 /* getopt_long will have already printed an error */
                 std::cout << "WTF?" << "\n";
+                break;
+            case 'v':
+                version();
+                break;
+            case 'h':
+                help();
                 break;
             default:
                 /* Not sure how to get here... */
@@ -68,9 +109,12 @@ void get_context(struct context *ctx, int argc, char *argv []) {
                 break;
         }
     }
+
+    /* allocate space for random sequence */
     ctx->ref_seqeunce = std::vector<int>(ctx->nref);
-    gen_ref_seq(ctx->npage_min, ctx->npage_max, ctx->ref_seqeunce, DISTRIB_NORMAL);
-    //gen_ref_seq(ctx->npage_min, ctx->npage_max, ctx->ref_seqeunce, DISTRIB_UNIFORM);
+
+    /*create random sequence based on specified distrubution*/
+    gen_ref_seq(ctx);
 
     /* Deal with non-option arguments here */
     if ( optind < argc )
