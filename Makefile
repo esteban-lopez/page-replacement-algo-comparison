@@ -30,5 +30,11 @@ test:
 test2:
 	./$(TARGET) --num-frames 30 --min-page 1 --max-page 50 --num-references 10000 --mean 30 --stddev 5 --poisson
 
+test3:
+	./$(TARGET) --num-frames 30 --min-page 1 --max-page 50 --num-references 10000 --mean 30 --stddev 5 --exponential
+
+test-binomial:
+	./$(TARGET) --num-frames 30 --min-page 1 --max-page 50 --num-references 10000 --mean 0.5 --binomial
+
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)

@@ -13,7 +13,7 @@ struct context {
     int npage_max = 9;
     int nref = 30; // number of reference sequence
     int available_frames = 7;
-    int mean = 10;
+    double mean = 10;
     int stddev = 0;
     int distribution;
     std::vector<int> ref_seqeunce;

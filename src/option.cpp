@@ -52,7 +52,9 @@ void get_context(struct context *ctx, int argc, char *argv []) {
         switch( choice )
         {
             case OPT_MEAN:
+                std::cout << "mean : " << atof(optarg) << "\n";
                 ctx->mean = atoi(optarg);
+                /* std::cout << "mean : " << ctx->mean << "\n"; */
                 break;
             case OPT_STDDEV:
                 ctx->stddev = atoi(optarg);
@@ -79,7 +81,6 @@ void get_context(struct context *ctx, int argc, char *argv []) {
                 break;
             case OPT_USERDIST:
                 break;
-
 
             case 'f':
                 ctx->available_frames = atoi(optarg);

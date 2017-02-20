@@ -124,22 +124,26 @@ void gen_geometric(struct context *ctx)
 void gen_binomial(struct context *ctx)
 {
     /* number of experiments */
-    int ntrial = ctx->npage_max - ctx->npage_min;
-
+    int ntrial = ctx->npage_max - ctx->npage_min + 1;
+    std::cout << "ntrial : " << ntrial << "\n";
     std::binomial_distribution<int> binomial_dist(ntrial, ctx->mean);
     std::random_device rd;
     std::default_random_engine e1(rd());
 
     int sz = ctx->ref_seqeunce.size();
     int cnt = 0;
+    std::cout << "mean : " << ctx->mean << "\n";
 
-    while (cnt < sz) {
-        double ran = binomial_dist(e1) + ctx->npage_min;
-
+    while (cnt < 100) {
+        /* double ran = binomial_dist(e1) + ctx->npage_min; */
+        double ran = binomial_dist(e1);
+        /* std::cout << ran << "\n"; */
         if (ran >= ctx->npage_min && ran <= ctx->npage_max) {
             ctx->ref_seqeunce[cnt++] = (int)ran;
             continue;
         } 
+        ++cnt;
+
     }
 }
 
@@ -147,7 +151,7 @@ void gen_binomial(struct context *ctx)
 /* This distribution produces random numbers where each value represents the interval between two random events that are independent but statistically defined by a constant average rate of occurrence (its lambda, λ). */
 void gen_exponential(struct context *ctx)
 {
-    std::exponential_distribution<int> exponential_dist(ctx->mean);
+    std::exponential_distribution<double> exponential_dist(ctx->mean);
     std::random_device rd;
     std::default_random_engine e1(rd());
 
@@ -155,8 +159,7 @@ void gen_exponential(struct context *ctx)
     int cnt = 0;
 
     while (cnt < sz) {
-        double ran = exponential_dist(e1) + ctx->npage_min;
-
+        double ran = 1/exponential_dist(e1);
         if (ran >= ctx->npage_min && ran <= ctx->npage_max) {
             ctx->ref_seqeunce[cnt++] = (int)ran;
             continue;
