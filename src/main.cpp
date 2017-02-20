@@ -25,10 +25,10 @@ int main(int argc, char *argv[])
     page_rep_algo.push_back(new FIFO);
     page_rep_algo.push_back(new MFU);
     page_rep_algo.push_back(new LFU);
-    page_rep_algo.push_back(new SecondChance);
+    /*page_rep_algo.push_back(new SecondChance);*/
 
     /* This is strategy pattern! */
-    for (int i = 0; i < MAX_ALGO; i++) {
+    for (int i = 0; i < page_rep_algo.size(); i++) {
         /*std::cout << page_rep_algo[i]->count_page_fault(&ictx) << "\n";*/
         print_page_fault_info(page_rep_algo[i], ictx);
     }

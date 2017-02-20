@@ -7,7 +7,6 @@
 #define DISTRIB_EXPONENTIAL 3
 #define DISTRIB_GAMMA 4
 #define DISTRIB_NORMAL 5
-#define DISTRIB_EXPONEN 6
 #define DISTRIB_UNIFORM 7
 
 /*void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq);
@@ -15,9 +14,15 @@ void gen_ref_seq(int range_min, int range_max, std::vector<int> &rseq, int distr
 
 void gen_ref_seq(struct context *ctx);
 void gen_ref_seq(struct context *ctx);
-void gen_uniform(struct context *ctx);
+
+
 void gen_normal(struct context *ctx);
+void gen_uniform(struct context *ctx);
 void gen_poisson(struct context *ctx);
+void gen_geometric(struct context *ctx);
+void gen_binomial(struct context *ctx);
+void gen_exponential(struct context *ctx);
+void gen_gamma(struct context *ctx);
 
 /* Normal distribution calculates mean by (range_min + range_max) / 2
  * and standard deviation is 5 */
