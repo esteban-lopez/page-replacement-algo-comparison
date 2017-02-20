@@ -12,4 +12,4 @@ if [ ! -d bin ]; then
     mkdir bin
 fi
 
-make -j$(cat /proc/cpuinfo | grep cpu\ core | head -1 | awk {'print $4;'})
+make -j$(nproc)
