@@ -1,7 +1,7 @@
 #include <vector>
 #include <random>
 
-#define fill_ref_sequence(distb) \
+/* #define fill_ref_sequence(distb) \
     int sz = ctx->ref_seqeunce.size(); \
     int cnt = 0; \
     while (cnt < sz) { \
@@ -10,8 +10,7 @@
             ctx->ref_seqeunce[cnt++] = (int)ran; \
             continue; \
         } \
-    } \
-
+    } \ */
 #define DISTRIB_BINOMIAL 0
 #define DISTRIB_GEOMETRIC 1
 #define DISTRIB_POISSON 2

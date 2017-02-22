@@ -47,18 +47,12 @@ void get_context(struct context *ctx, int argc, char *argv []) {
 
         if (choice == -1)
             break;
-        int distribution = DISTRIB_UNIFORM;
+
+        /* If no distribution is given, then uniform is default */
+        ctx->distribution = DISTRIB_UNIFORM;
 
         switch( choice )
         {
-            case OPT_MEAN:
-                std::cout << "mean : " << atof(optarg) << "\n";
-                ctx->mean = atoi(optarg);
-                /* std::cout << "mean : " << ctx->mean << "\n"; */
-                break;
-            case OPT_STDDEV:
-                ctx->stddev = atoi(optarg);
-                break;
 
             /* specify distribution type*/
             case OPT_POISSON:
@@ -82,6 +76,15 @@ void get_context(struct context *ctx, int argc, char *argv []) {
             case OPT_USERDIST:
                 break;
 
+            /* specify distribution arguments */
+            case OPT_MEAN:
+                ctx->mean = atoi(optarg);
+                break;
+            case OPT_STDDEV:
+                ctx->stddev = atoi(optarg);
+                break;
+
+            /* sepcify page fault simulation algorithm parameter */
             case 'f':
                 ctx->available_frames = atoi(optarg);
                 break;
@@ -114,7 +117,7 @@ void get_context(struct context *ctx, int argc, char *argv []) {
     /* allocate space for random sequence */
     ctx->ref_seqeunce = std::vector<int>(ctx->nref);
 
-    /*create random sequence based on specified distrubution*/
+    /* create random sequence based on specified distrubution */
     gen_ref_seq(ctx);
 
     /* Deal with non-option arguments here */
